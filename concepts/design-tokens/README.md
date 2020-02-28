@@ -6,20 +6,25 @@
 
 -- <cite>Robin Rendle "[What are design tokens]", CSS-Tricks</cite>
 
-## What we want to achived with Design tokens
+## What we want to achive with Design tokens
 
-In the current state of the barista components library, we do share some basic
+In the current state of the Barista components library, we do share some basic
 color, typography and spacing definitions through scss mixins and variables
-within the angular eco system. Which works very well for color definitions, did
-not proove to be consistent for spacings and typography definitions. As our
-plans for barista do not only target angular, but a more framework agnostic
-component library, we are re-evaluating the way on how we deal with design
-tokens.
+within the angular ecosystem. Which works very well for color definitions, did
+not prove to be consistent for spacings and typography definitions. As our plans
+for Barista do not only target Angular, but a more framework agnostic component
+library, we are re-evaluating the way on how we deal with design tokens.
 
 Extracted design tokens should enable us to be extremely consistent within the
 system. With everything, that is relevant to the design-language baked into
 tokens, we should be able to enforce usage of these tokens with linting rules
 like [stylelint declaration strict value].
+
+## Naming of design tokens
+
+To prevent conflicts with css custom properties or other variables in output
+files, we should prefix all our provided design tokens, mixins or exported
+constants with a `dt-`/`dt` prefix.
 
 ## Structure
 
@@ -29,7 +34,7 @@ discussion.
 
 Just like the format, the file structure is also up for discussion. There are
 multiple ways of structuring the design tokens into a folder structure, and a
-convertion tool like [theo] will let you customize
+conversion tool like [theo] will let you customize
 [input and output formats quite easily](#output-and-formats).
 
 Here are some variations of design tokens structure in the wild:
@@ -95,18 +100,18 @@ imports:
   - '../aliases/spacing.alias.yml'
 
 props:
-  - name: spacing--0
+  - name: dt-spacing--0
     value: '{!spacing--0}'
     comment: 'Zero spacing, use sparcely as it will make layouts very dense'
     meta:
       friendlyName: 'No spacing'
 
-  - name: spacing--xx-small
+  - name: dt-spacing--xx-small
     value: '{!spacing--xx-small}'
     meta:
       friendlyName: 'Spacing, xx-small'
 
-  - name: spacing--x-small
+  - name: dt-spacing--x-small
     value: '{!spacing--x-small}'
     meta:
       friendlyName: 'Spacing, x-small'
@@ -128,25 +133,25 @@ props:
   # Base
 
   # Colours
-  - name: base-button-background-color
+  - name: dt-base-button-background-color
     value: '{!color-key-base}'
     comment: Base Colours
-  - name: base-button-border-color
+  - name: dt-base-button-border-color
     value: '{!color-key-lighter}'
 
   # Hover Styles
-  - name: base-button-background-color--hover
+  - name: dt-base-button-background-color--hover
     value: '{!color-key-lighter}'
 
   # Primary
 
-  - name: primary-button-background-color
+  - name: dt-primary-button-background-color
     value: '{!color-key-base}'
     comment: Primary Colours
-  - name: primary-button-background-color--hover
+  - name: dt-primary-button-background-color--hover
     value: '{!color-key-lighter}'
 
-  - name: primary-button-border-color
+  - name: dt-primary-button-border-color
     value: '{!color-key--lighter}'
 ```
 
@@ -154,7 +159,7 @@ props:
 
 Tools like [theo] can help us transform the yml/json definitions of our design
 tokens into the output formats that we want to provide / consume with the design
-system. Potential output formats that we should consider.
+system. Potential output formats that we should consider:
 
 ### CSS custom properites
 
@@ -171,10 +176,10 @@ Potential output could look like this:
 ```css
 /** custom-properties/button.css */
 :root {
-  --base-button-background-color: #123456;
-  --base-button-background-color--hover: #123456;
-  --primary-button-background-color: #123456;
-  --primary-button-background-color--hover: #123456;
+  --dt-base-button-background-color: #123456;
+  --dt-base-button-background-color--hover: #123456;
+  --dt-primary-button-background-color: #123456;
+  --dt-primary-button-background-color--hover: #123456;
 }
 ```
 
@@ -189,13 +194,13 @@ Potential output could look like this:
 
 ```scss
 /** scss-variables/button.scss*/
-$base-button-background-color: #123456;
-$base-button-background-color--hover: #123456;
-$primary-button-background-color: #123456;
-$primary-button-background-color--hover: #123456;
+$dt-base-button-background-color: #123456;
+$dt-base-button-background-color--hover: #123456;
+$dt-primary-button-background-color: #123456;
+$dt-primary-button-background-color--hover: #123456;
 
 // But could also include
-$base-button-customizeable-example: var(--base-button-background-color);
+$dt-base-button-customizeable-example: var(--dt-base-button-background-color);
 ```
 
 ### Typescript constants
@@ -208,10 +213,10 @@ Potential output could look like this:
 
 ```ts
 /** ts-constants/button.ts*/
-export const baseButtonBackgroundColor = '#123456';
-export const baseButtonBackgroundColorHover = '#123456';
-export const primaryPuttonBackgroundColor = '#123456';
-export const primaryButtonBackgroundColorHover = '#123456';
+export const dtBaseButtonBackgroundColor = '#123456';
+export const dtBaseButtonBackgroundColorHover = '#123456';
+export const dtPrimaryButtonBackgroundColor = '#123456';
+export const dtPrimaryButtonBackgroundColorHover = '#123456';
 ```
 
 [what are design tokens]: https://css-tricks.com/what-are-design-tokens/
