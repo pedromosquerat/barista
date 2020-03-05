@@ -121,7 +121,7 @@ test('if it is possible to delete an option via the filter field', async (testCo
     .notOk();
 });
 
-fixture('Quick Filter with initial Data')
+fixture('Quick Filter with initial data')
   .page('http://localhost:4200/quick-filter/initial-data')
   .beforeEach(async (testController: TestController) => {
     await testController.resizeWindow(1200, 800);
