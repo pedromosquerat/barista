@@ -48,7 +48,7 @@ test('if nothing is selected the distinct should be set to all', async (testCont
     .notOk();
 });
 
-test('if nothing is selected the filter friedl should be empty', async (testController: TestController) => {
+test('if nothing is selected the filter field should be empty', async (testController: TestController) => {
   await testController.expect(getFilterfieldTags()).eql([]);
 });
 
