@@ -33,7 +33,7 @@ export type Reducer = (
  * @internal
  * The Quick Filter reducer is the place where we handle all the state updates
  * To have a single entry point. Every action can trigger an update of the state.
- * It has to be a immutable function that always returns a new object of the state.
+ * It has to be a pure function that always returns a new object of the state.
  * @param state The state that should be modified.
  * @param action The current action that should be handled.
  */
