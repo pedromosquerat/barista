@@ -23,7 +23,7 @@ import { filter, map, pluck, tap, withLatestFrom } from 'rxjs/operators';
 import { DtQuickFilterDataSource } from '../quick-filter-data-source';
 import { QuickFilterState } from './store';
 
-/** @internal Select all autocompletes from the root Node Def out of the store */
+/** @internal Select all autocompletes from the root Node Def from the store */
 export const getAutocompletes = (
   state$: Observable<QuickFilterState>,
 ): Observable<DtNodeDef[]> =>
