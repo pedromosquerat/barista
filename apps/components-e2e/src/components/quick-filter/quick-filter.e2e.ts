@@ -36,7 +36,7 @@ fixture('Quick Filter')
     radio: true,
   })
   .beforeEach(async (testController: TestController) => {
-    await testController.resizeWindow(1200, 800);
+    await resetWindowSizeToDefault();
     await waitForAngular();
   });
 
