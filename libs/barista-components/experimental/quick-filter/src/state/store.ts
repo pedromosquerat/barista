@@ -49,7 +49,7 @@ const effects: Effect[] = [switchDataSourceEffect];
  * clear state that can only be modified through actions.
  *
  * 1. Action gets dispatched (An action indicates a change in the store)
- * 2. The reducer gets an action and the current state and according to the action
+ * 2. The reducer gets an action and the current state, and according to the action
  *    modifies the state.
  * 3. A Selector can always read the latest value from the store and displays it in
  *    a template. So the only way to modify the state is dispatching an action.
