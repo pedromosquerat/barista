@@ -82,7 +82,7 @@ export class DtQuickFilterGroup {
     }
   }
 
-  /** @internal Select or de select a checkbox */
+  /** @internal Select or deselect a checkbox */
   _selectCheckBox(change: DtCheckboxChange<DtNodeDef>): void {
     const action = change.checked
       ? addFilter(change.source.value)
