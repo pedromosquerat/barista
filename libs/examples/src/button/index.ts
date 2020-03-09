@@ -14,11 +14,4 @@
  * limitations under the License.
  */
 
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { AppModule } from './app/app.module';
-
-platformBrowserDynamic()
-  .bootstrapModule(AppModule, { preserveWhitespaces: true })
-  .catch(err => {
-    console.error(err);
-  });
+export { DtButtonExamplesModule } from './button-examples.module';
