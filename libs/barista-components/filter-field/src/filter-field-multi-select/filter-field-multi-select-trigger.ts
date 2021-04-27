@@ -104,6 +104,7 @@ export class DtFilterFieldMultiSelectTrigger<T>
 
   /** Opens the filter-field multiSelect panel. */
   openPanel(): void {
+    console.log('OPENING!?');
     if (!this.element._isOpen) {
       super.openPanel();
       this._element.focus();

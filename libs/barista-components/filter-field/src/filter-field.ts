@@ -577,7 +577,9 @@ export class DtFilterField<T = any>
         // races between the filter field keyboardEvent handler and the autocomplete
         // keyboardEvent handler.
         this._inputFieldKeyboardLocked = false;
+        console.log('HERE! OPENING? I');
         if (this._isFocused) {
+          console.log('HERE! OPENING?');
           if (
             isDtAutocompleteDef(this._currentDef) ||
             (isDtFreeTextDef(this._currentDef) &&
@@ -600,6 +602,7 @@ export class DtFilterField<T = any>
             // need to return here, otherwise the focus would jump back into the filter field
             return;
           } else if (isDtMultiSelectDef(this._currentDef)) {
+            console.log('HERE! OPENING MULTISELECT');
             this._multiSelectTrigger.openPanel();
           }
           // It is necessary to restore the focus back to the input field

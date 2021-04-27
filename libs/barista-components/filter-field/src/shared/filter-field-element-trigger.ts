@@ -191,6 +191,7 @@ export class DtFilterFieldElementTrigger<
     protected _viewportRuler: ViewportRuler,
     protected _platform: Platform,
     protected _overlayContainer: OverlayContainer,
+    protected _overlayConfig: OverlayConfig = new OverlayConfig(),
     // tslint:disable-next-line:no-any
     @Optional() @Inject(DOCUMENT) protected _document?: any,
     @Optional()
@@ -382,11 +383,17 @@ export class DtFilterFieldElementTrigger<
     return this._elementRef;
   }
 
+  private _getPanelWidth(): number | string {
+    return (this._element as any).panelWidth || this._getHostWidth();
+  }
+
   /** Returns the overlay configuration for the filter-field-element. */
   protected _getOverlayConfig(): OverlayConfig {
     return new OverlayConfig({
       positionStrategy: this._getOverlayPosition(),
       scrollStrategy: this._overlay.scrollStrategies.reposition(),
+      ...this._overlayConfig,
+      maxWidth: this._getPanelWidth(),
     });
   }
 
