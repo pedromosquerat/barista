@@ -49,6 +49,10 @@ export interface DtSunburstChartOverlayData {
   changeDetection: ChangeDetectionStrategy.OnPush,
   preserveWhitespaces: false,
   exportAs: 'dt-sunburst-chart-segment',
+  host: {
+    '(mouseenter)': 'overlayTemplate && _handleMouseEnter($event)',
+    '(mouseleave)': 'overlayTemplate && _handleMouseLeave($event)',
+  },
 })
 export class DtSunburstChartSegment
   extends DtOverlayTrigger<{
@@ -101,6 +105,7 @@ export class DtSunburstChartSegment
 
       this.dtOverlayConfig = {
         data: {
+          ...this.slice.data,
           label: this.slice.data.origin.label,
           value: this.slice.value,
         },

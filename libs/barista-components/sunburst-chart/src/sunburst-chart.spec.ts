@@ -393,7 +393,7 @@ describe('DtSunburstChart', () => {
       expect(overlayContainer).toBeDefined();
     });
 
-    it('should display and hide an overlay when calledff', () => {
+    fit('should display and hide an overlay when called', () => {
       component.openOverlay(component.slices[0]);
       fixture.detectChanges();
 
@@ -403,7 +403,8 @@ describe('DtSunburstChart', () => {
       expect(overlayPane).toBeDefined();
 
       const overlayContent = (overlayPane!.textContent ?? '').trim();
-      expect(overlayContent).toBe('Purple');
+      console.log('HERE!', component.slices[0]);
+      expect(overlayContent).toBe(component.slices[0]);
 
       component.closeOverlay();
       fixture.detectChanges();
