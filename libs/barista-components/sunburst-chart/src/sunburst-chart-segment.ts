@@ -56,7 +56,7 @@ export interface DtSunburstChartOverlayData {
 })
 export class DtSunburstChartSegment
   extends DtOverlayTrigger<{
-    $implicit: DtSunburstChartOverlayData;
+    $implicit: Partial<DtSunburstChartOverlayData>;
   }>
   implements AfterContentInit {
   /**
@@ -83,7 +83,7 @@ export class DtSunburstChartSegment
    */
 
   @Input() overlayTemplate: TemplateRef<{
-    $implicit: DtSunburstChartOverlayData;
+    $implicit: Partial<DtSunburstChartOverlayData>;
   }>;
 
   elementReference: ElementRef;
@@ -102,7 +102,6 @@ export class DtSunburstChartSegment
   ngAfterContentInit(): void {
     if (this.overlayTemplate) {
       this.overlay = this.overlayTemplate;
-
       this.dtOverlayConfig = {
         data: {
           ...this.slice.data,
